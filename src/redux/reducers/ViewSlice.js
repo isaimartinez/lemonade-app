@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit'
 const initialState = {
   value: 0,
   tourView: 0,
-  maxTourView: 7
+  maxTourView: 5
 }
 
 export const viewSlice = createSlice({

@@ -1,6 +1,6 @@
 import React from 'react'
 import {useTour} from './useTour'
-import {First, Second, Third, Fourth, Fifth} from '../../components'
+import {First, Second, Third, Fourth, Fifth, Sixth} from '../../components'
 
 const Tour = () => {
   const {dispatch, tourView, setTourView} = useTour()
@@ -16,6 +16,8 @@ const Tour = () => {
       return (<Fourth />)
     case 4:
       return (<Fifth />)
+    case 5:
+      return (<Sixth />)
     
     default:
       break;
