@@ -10,10 +10,25 @@ import Paper from '@mui/material/Paper';
 import { useSelector, useDispatch } from 'react-redux'
 import { setActivos } from '../../redux/reducers/DataSlice'
 
+const RenderCell = ({item}) => {
+  if(item) {
+    const {label, amount} = item
+    return(
+      <div className='flex flex-row justify-between'>
+        <p>{label}</p>
+        <p>${amount}</p>
+      </div>
+    )
+  }
+}
+
 const BalanceGeneral = () => {
   const dispatch = useDispatch()
   const state = useSelector((state) => state)
   const {activos, pasivos} = state.data
+
+  const maxLength = Math.max(activos.length, pasivos.length);
+
 
   return (
     <TableContainer component={Paper}>
@@ -25,28 +40,12 @@ const BalanceGeneral = () => {
           </TableRow>
         </TableHead>
         <TableBody>
-          <TableRow
-            sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-          >
-            <TableCell>
-              {
-                activos.map((item,i) => (
-                  <div>
-                    <p>{item.label} ${item.amount}</p>
-                  </div>
-                ))
-              }
-            </TableCell>
-            <TableCell>
-              {
-                pasivos.map((item,i) => (
-                  <div>
-                    <p>{item.label} ${item.amount}</p>
-                  </div>
-                ))
-              }
-            </TableCell>
-          </TableRow>
+        {[...Array(maxLength)].map((_, index) => (
+            <TableRow key={index}>
+              <TableCell>{<RenderCell item={activos[index]}/>}</TableCell>
+              <TableCell>{<RenderCell item={pasivos[index]}/>}</TableCell>
+            </TableRow>
+          ))}
         </TableBody>
       </Table>
     </TableContainer>

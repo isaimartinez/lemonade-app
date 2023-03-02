@@ -4,7 +4,7 @@ import {Menu, Tour} from './pages'
 function App() {
   return (
     <div className='flex relative  select-none'>
-      <div className='bg-white dark:bg-main-dark-bg  w-full min-h-screen'>
+      <div className='bg-main  w-full min-h-screen'>
         <div>
           <Routes>
             <Route path="/menu" element={<Menu />}/>
