@@ -1,5 +1,5 @@
 import { Routes, Route} from 'react-router-dom'
-import {Menu, Tour} from './pages'
+import {Menu, Tour, Weekend} from './pages'
 
 function App() {
   return (
@@ -9,6 +9,7 @@ function App() {
           <Routes>
             <Route path="/menu" element={<Menu />}/>
             <Route path="/tour" element={<Tour />}/>
+            <Route path="/weekend" element={<Weekend />}/>
           </Routes>
         </div>
       </div>
